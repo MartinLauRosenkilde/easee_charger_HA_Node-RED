@@ -1,0 +1,5089 @@
+[
+    {
+        "id": "0c41db66bbe6a99a",
+        "type": "tab",
+        "label": "Easee_Kona_Flow",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "111c77250c4443ba",
+        "type": "charger-streaming-client",
+        "z": "0c41db66bbe6a99a",
+        "name": "Easee Charger Lite",
+        "charger": "ABC1DE2",
+        "configuration": "",
+        "inputs": 1,
+        "outputs": 6,
+        "x": 450,
+        "y": 1420,
+        "wires": [
+            [],
+            [],
+            [],
+            [],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "f6395d52d56b56ca",
+        "type": "api-call-service",
+        "z": "0c41db66bbe6a99a",
+        "name": "1x6AMP",
+        "server": "694f223e.a8eb6c",
+        "version": 5,
+        "debugenabled": true,
+        "domain": "easee",
+        "service": "set_circuit_dynamic_limit",
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [],
+        "data": "{\"charger_id\":\"{{payload.charger_id}}\",\"currentP1\":6,\"currentP2\":0,\"currentP3\":0}",
+        "dataType": "json",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "x": 5080,
+        "y": 820,
+        "wires": [
+            [
+                "041db3c6fe0597d0"
+            ]
+        ]
+    },
+    {
+        "id": "95fce12e4071364c",
+        "type": "api-call-service",
+        "z": "0c41db66bbe6a99a",
+        "name": "3x6AMP",
+        "server": "694f223e.a8eb6c",
+        "version": 5,
+        "debugenabled": false,
+        "domain": "easee",
+        "service": "set_circuit_dynamic_limit",
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [],
+        "data": "{\"charger_id\":\"{{payload.charger_id}}\",\"currentP1\":6,\"currentP2\":6,\"currentP3\":6}",
+        "dataType": "json",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "x": 5080,
+        "y": 1320,
+        "wires": [
+            [
+                "041db3c6fe0597d0"
+            ]
+        ]
+    },
+    {
+        "id": "fd893483b3579977",
+        "type": "switch",
+        "z": "0c41db66bbe6a99a",
+        "name": "phase switch auto",
+        "property": "ExcessSolar",
+        "propertyType": "global",
+        "rules": [
+            {
+                "t": "lt",
+                "v": "500",
+                "vt": "num"
+            },
+            {
+                "t": "btwn",
+                "v": "500",
+                "vt": "num",
+                "v2": "1380",
+                "v2t": "num"
+            },
+            {
+                "t": "btwn",
+                "v": "1381",
+                "vt": "num",
+                "v2": "1840",
+                "v2t": "num"
+            },
+            {
+                "t": "btwn",
+                "v": "1841",
+                "vt": "num",
+                "v2": "2300",
+                "v2t": "num"
+            },
+            {
+                "t": "btwn",
+                "v": "2301",
+                "vt": "num",
+                "v2": "2990",
+                "v2t": "num"
+            },
+            {
+                "t": "btwn",
+                "v": "2991",
+                "vt": "num",
+                "v2": "3680",
+                "v2t": "num"
+            },
+            {
+                "t": "btwn",
+                "v": "3681",
+                "vt": "num",
+                "v2": "4140",
+                "v2t": "num"
+            },
+            {
+                "t": "btwn",
+                "v": "4141",
+                "vt": "num",
+                "v2": "5520",
+                "v2t": "num"
+            },
+            {
+                "t": "btwn",
+                "v": "5521",
+                "vt": "num",
+                "v2": "6900",
+                "v2t": "num"
+            },
+            {
+                "t": "btwn",
+                "v": "6901",
+                "vt": "num",
+                "v2": "8970",
+                "v2t": "num"
+            },
+            {
+                "t": "gte",
+                "v": "8971",
+                "vt": "str"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 11,
+        "x": 3750,
+        "y": 1140,
+        "wires": [
+            [
+                "b75b4670a15c6f47"
+            ],
+            [
+                "be102786ebad9427"
+            ],
+            [
+                "cbf3b4a91eef8563"
+            ],
+            [
+                "308dd079b6a34a47"
+            ],
+            [
+                "1e02269c786c3f28"
+            ],
+            [
+                "3c2818cb3ade24d6"
+            ],
+            [
+                "cc0f5209a30ef683"
+            ],
+            [
+                "aad6e7a3128d6265"
+            ],
+            [
+                "51b869421b2c8fc9"
+            ],
+            [
+                "19deb983a1d3a558"
+            ],
+            [
+                "75b1940e8b896780"
+            ]
+        ]
+    },
+    {
+        "id": "1942ab2a59b9c414",
+        "type": "api-call-service",
+        "z": "0c41db66bbe6a99a",
+        "name": "1x8AMP",
+        "server": "694f223e.a8eb6c",
+        "version": 5,
+        "debugenabled": false,
+        "domain": "easee",
+        "service": "set_circuit_dynamic_limit",
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [],
+        "data": "{\"charger_id\":\"{{payload.charger_id}}\",\"currentP1\":8,\"currentP2\":0,\"currentP3\":0}",
+        "dataType": "json",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "x": 5080,
+        "y": 920,
+        "wires": [
+            [
+                "041db3c6fe0597d0"
+            ]
+        ]
+    },
+    {
+        "id": "15fb213facdd4210",
+        "type": "api-call-service",
+        "z": "0c41db66bbe6a99a",
+        "name": "1x10AMP",
+        "server": "694f223e.a8eb6c",
+        "version": 5,
+        "debugenabled": false,
+        "domain": "easee",
+        "service": "set_circuit_dynamic_limit",
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [],
+        "data": "{\"charger_id\":\"{{payload.charger_id}}\",\"currentP1\":10,\"currentP2\":0,\"currentP3\":0}",
+        "dataType": "json",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "x": 5080,
+        "y": 1020,
+        "wires": [
+            [
+                "041db3c6fe0597d0"
+            ]
+        ]
+    },
+    {
+        "id": "5e5edee1bec776ad",
+        "type": "api-call-service",
+        "z": "0c41db66bbe6a99a",
+        "name": "1x16AMP",
+        "server": "694f223e.a8eb6c",
+        "version": 5,
+        "debugenabled": false,
+        "domain": "easee",
+        "service": "set_circuit_dynamic_limit",
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [],
+        "data": "{\"charger_id\":\"{{payload.charger_id}}\",\"currentP1\":16,\"currentP2\":0,\"currentP3\":0}",
+        "dataType": "json",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "x": 5080,
+        "y": 1220,
+        "wires": [
+            [
+                "041db3c6fe0597d0"
+            ]
+        ]
+    },
+    {
+        "id": "6497a3aa4aa9cffb",
+        "type": "api-call-service",
+        "z": "0c41db66bbe6a99a",
+        "name": "3x8AMP",
+        "server": "694f223e.a8eb6c",
+        "version": 5,
+        "debugenabled": false,
+        "domain": "easee",
+        "service": "set_circuit_dynamic_limit",
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [],
+        "data": "{\"charger_id\":\"{{payload.charger_id}}\",\"currentP1\":8,\"currentP2\":8,\"currentP3\":8}",
+        "dataType": "json",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "x": 5080,
+        "y": 1420,
+        "wires": [
+            [
+                "041db3c6fe0597d0"
+            ]
+        ]
+    },
+    {
+        "id": "5357efb09c724825",
+        "type": "api-call-service",
+        "z": "0c41db66bbe6a99a",
+        "name": "3x10AMP",
+        "server": "694f223e.a8eb6c",
+        "version": 5,
+        "debugenabled": false,
+        "domain": "easee",
+        "service": "set_circuit_dynamic_limit",
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [],
+        "data": "{\"charger_id\":\"{{payload.charger_id}}\",\"currentP1\":10,\"currentP2\":10,\"currentP3\":10}",
+        "dataType": "json",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "x": 5080,
+        "y": 1520,
+        "wires": [
+            [
+                "041db3c6fe0597d0"
+            ]
+        ]
+    },
+    {
+        "id": "041db3c6fe0597d0",
+        "type": "debug",
+        "z": "0c41db66bbe6a99a",
+        "name": "debug Charge",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "payload",
+        "statusType": "auto",
+        "x": 5420,
+        "y": 1220,
+        "wires": []
+    },
+    {
+        "id": "7e4f4d5e6558c44b",
+        "type": "api-call-service",
+        "z": "0c41db66bbe6a99a",
+        "name": "1x13AMP",
+        "server": "694f223e.a8eb6c",
+        "version": 5,
+        "debugenabled": false,
+        "domain": "easee",
+        "service": "set_circuit_dynamic_limit",
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [],
+        "data": "{\"charger_id\":\"{{payload.charger_id}}\",\"currentP1\":13,\"currentP2\":0,\"currentP3\":0}",
+        "dataType": "json",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "x": 5080,
+        "y": 1120,
+        "wires": [
+            [
+                "041db3c6fe0597d0"
+            ]
+        ]
+    },
+    {
+        "id": "642a13f345468610",
+        "type": "api-call-service",
+        "z": "0c41db66bbe6a99a",
+        "name": "Pause Charging",
+        "server": "694f223e.a8eb6c",
+        "version": 5,
+        "debugenabled": false,
+        "domain": "easee",
+        "service": "set_circuit_dynamic_limit",
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [],
+        "data": "{\"charger_id\":\"{{payload.charger_id}}\",\"currentP1\":0,\"currentP2\":0,\"currentP3\":0}",
+        "dataType": "json",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "x": 5100,
+        "y": 720,
+        "wires": [
+            [
+                "041db3c6fe0597d0"
+            ]
+        ]
+    },
+    {
+        "id": "8ff8257d6f728973",
+        "type": "api-current-state",
+        "z": "0c41db66bbe6a99a",
+        "name": "excess_solar_power_30_min_avg",
+        "server": "f3c6dfc0.bd122",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "sensor.excess_solar_energy_30_min_avg",
+        "state_type": "num",
+        "blockInputOverrides": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "x": 840,
+        "y": 280,
+        "wires": [
+            [
+                "a3a56d0be86e171c"
+            ]
+        ]
+    },
+    {
+        "id": "677da9b606b932d8",
+        "type": "api-call-service",
+        "z": "0c41db66bbe6a99a",
+        "name": "3x13AMP",
+        "server": "694f223e.a8eb6c",
+        "version": 5,
+        "debugenabled": false,
+        "domain": "easee",
+        "service": "set_circuit_dynamic_limit",
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [],
+        "data": "{\"charger_id\":\"{{payload.charger_id}}\",\"currentP1\":13,\"currentP2\":13,\"currentP3\":13}",
+        "dataType": "json",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "x": 5080,
+        "y": 1620,
+        "wires": [
+            [
+                "041db3c6fe0597d0"
+            ]
+        ]
+    },
+    {
+        "id": "0ac4d666922161cd",
+        "type": "api-call-service",
+        "z": "0c41db66bbe6a99a",
+        "name": "3x16AMP",
+        "server": "694f223e.a8eb6c",
+        "version": 5,
+        "debugenabled": false,
+        "domain": "easee",
+        "service": "set_circuit_dynamic_limit",
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [],
+        "data": "{\"charger_id\":\"{{payload.charger_id}}\",\"currentP1\":16,\"currentP2\":16,\"currentP3\":16}",
+        "dataType": "json",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "x": 5080,
+        "y": 1720,
+        "wires": [
+            [
+                "041db3c6fe0597d0"
+            ]
+        ]
+    },
+    {
+        "id": "a3a56d0be86e171c",
+        "type": "change",
+        "z": "0c41db66bbe6a99a",
+        "name": "Saved_Excess_Solar",
+        "rules": [
+            {
+                "t": "set",
+                "p": "ExcessSolar",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1120,
+        "y": 280,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "7ef8db7b9268668b",
+        "type": "inject",
+        "z": "0c41db66bbe6a99a",
+        "name": "Run every 5-10 minutes",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 380,
+        "y": 1240,
+        "wires": [
+            [
+                "111c77250c4443ba",
+                "c812843d08d6b3e6",
+                "8ff8257d6f728973",
+                "17ef863e29e62dd0",
+                "bdc0f5ed521cb312",
+                "30255f47afed8dd9",
+                "f8ab3c2539390e12",
+                "6f0951d477d2270b",
+                "2c62ac10e604e538",
+                "9279482d8ba7ecba",
+                "e0f9aa189d9be45c",
+                "ae59facfc6791b87",
+                "3007150f3ad1c3cd",
+                "3b53cc3d4d4a4fbe",
+                "069fa57d70853ebc",
+                "a2e7f0102f91233f",
+                "fb4cb9a030c39df4"
+            ]
+        ]
+    },
+    {
+        "id": "c812843d08d6b3e6",
+        "type": "api-current-state",
+        "z": "0c41db66bbe6a99a",
+        "name": "is_charging_awaiting?",
+        "server": "f3c6dfc0.bd122",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "sensor.easee_charger_lite_status",
+        "state_type": "str",
+        "blockInputOverrides": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "x": 800,
+        "y": 460,
+        "wires": [
+            [
+                "f5c91271c8cd3b46"
+            ]
+        ]
+    },
+    {
+        "id": "f5c91271c8cd3b46",
+        "type": "change",
+        "z": "0c41db66bbe6a99a",
+        "name": "Saved_Car_Status",
+        "rules": [
+            {
+                "t": "set",
+                "p": "CarStatus",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1050,
+        "y": 460,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "ff6097b76ff0c3fc",
+        "type": "delay",
+        "z": "0c41db66bbe6a99a",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 2900,
+        "y": 1660,
+        "wires": [
+            [
+                "a8c404cad7e703f8"
+            ]
+        ]
+    },
+    {
+        "id": "17ef863e29e62dd0",
+        "type": "delay",
+        "z": "0c41db66bbe6a99a",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "3",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 620,
+        "y": 1240,
+        "wires": [
+            [
+                "214e9c4e15bd15f2"
+            ]
+        ]
+    },
+    {
+        "id": "5ed291e8e45650d1",
+        "type": "switch",
+        "z": "0c41db66bbe6a99a",
+        "name": "chck_status",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "charging",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "awaiting_start",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "ready_to_charge",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "awaiting_authorization",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "disconnected",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 5,
+        "x": 2010,
+        "y": 1220,
+        "wires": [
+            [
+                "cb81b66678f242b9",
+                "6f92518543c7a45a"
+            ],
+            [
+                "cb81b66678f242b9",
+                "23472652819af890",
+                "910efb8970b342cf"
+            ],
+            [
+                "23472652819af890",
+                "cb81b66678f242b9",
+                "910efb8970b342cf"
+            ],
+            [
+                "cb81b66678f242b9",
+                "4dbad37bd2707287"
+            ],
+            [
+                "cb81b66678f242b9"
+            ]
+        ],
+        "outputLabels": [
+            "charging",
+            "awaiting_start",
+            "ready_to_charge",
+            "awaiting_authorization",
+            "disconnected"
+        ]
+    },
+    {
+        "id": "34b2935fd6e5b23e",
+        "type": "debug",
+        "z": "0c41db66bbe6a99a",
+        "name": "debug 8",
+        "active": true,
+        "tosidebar": false,
+        "console": false,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "payload",
+        "statusType": "auto",
+        "x": 3500,
+        "y": 1660,
+        "wires": []
+    },
+    {
+        "id": "348266e00446b71b",
+        "type": "change",
+        "z": "0c41db66bbe6a99a",
+        "name": "start_charging",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "start_charging",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 2520,
+        "y": 1660,
+        "wires": [
+            [
+                "284dc3e882717eed"
+            ]
+        ]
+    },
+    {
+        "id": "284dc3e882717eed",
+        "type": "easee-rest-client",
+        "z": "0c41db66bbe6a99a",
+        "name": "Easee Charger",
+        "charger": "ABC1DE2",
+        "site": "123456",
+        "circuit": "789012",
+        "configuration": "",
+        "inputs": 1,
+        "outputs": 1,
+        "x": 2720,
+        "y": 1660,
+        "wires": [
+            [
+                "ff6097b76ff0c3fc"
+            ]
+        ]
+    },
+    {
+        "id": "a8c404cad7e703f8",
+        "type": "api-current-state",
+        "z": "0c41db66bbe6a99a",
+        "name": "am_i_charging?",
+        "server": "f3c6dfc0.bd122",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "sensor.easee_charger_lite_status",
+        "state_type": "str",
+        "blockInputOverrides": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "x": 3080,
+        "y": 1660,
+        "wires": [
+            [
+                "87c2e52c1edd2be1"
+            ]
+        ]
+    },
+    {
+        "id": "87c2e52c1edd2be1",
+        "type": "switch",
+        "z": "0c41db66bbe6a99a",
+        "name": "chck_status",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "charging",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "awaiting_start",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "ready_to_charge",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "disconnected",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 4,
+        "x": 3270,
+        "y": 1660,
+        "wires": [
+            [
+                "34b2935fd6e5b23e",
+                "6f92518543c7a45a"
+            ],
+            [
+                "34b2935fd6e5b23e",
+                "57ebc7c612493521"
+            ],
+            [
+                "34b2935fd6e5b23e",
+                "57ebc7c612493521"
+            ],
+            [
+                "34b2935fd6e5b23e"
+            ]
+        ]
+    },
+    {
+        "id": "bdc0f5ed521cb312",
+        "type": "api-current-state",
+        "z": "0c41db66bbe6a99a",
+        "name": "AC_charging_limit",
+        "server": "f3c6dfc0.bd122",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "number.kona_ac_charging_limit",
+        "state_type": "num",
+        "blockInputOverrides": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "x": 790,
+        "y": 520,
+        "wires": [
+            [
+                "ccb168b0d32dd7fd"
+            ]
+        ]
+    },
+    {
+        "id": "30255f47afed8dd9",
+        "type": "api-current-state",
+        "z": "0c41db66bbe6a99a",
+        "name": "battery_level",
+        "server": "f3c6dfc0.bd122",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "sensor.kona_ev_battery_level",
+        "state_type": "num",
+        "blockInputOverrides": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "x": 770,
+        "y": 580,
+        "wires": [
+            [
+                "148519189fa76e81"
+            ]
+        ]
+    },
+    {
+        "id": "ccb168b0d32dd7fd",
+        "type": "change",
+        "z": "0c41db66bbe6a99a",
+        "name": "Saved_AC_limit",
+        "rules": [
+            {
+                "t": "set",
+                "p": "ACLimit",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1040,
+        "y": 520,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "148519189fa76e81",
+        "type": "change",
+        "z": "0c41db66bbe6a99a",
+        "name": "Saved_Batt_Level",
+        "rules": [
+            {
+                "t": "set",
+                "p": "BattLevel",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1050,
+        "y": 580,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "3723ebb94f0f98a1",
+        "type": "function",
+        "z": "0c41db66bbe6a99a",
+        "name": "am_i_fully_charged?",
+        "func": "// Retrieve the values from global context\nvar BattLevel = global.get('BattLevel');\nvar ACLimit = global.get('ACLimit');\n\n// Check if BattLevel is greater than or equal to ACLimit\nvar result = BattLevel >= ACLimit;\n\n// Return the boolean result in the payload\nmsg.payload = result;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1440,
+        "y": 1220,
+        "wires": [
+            [
+                "46446b6602355c9b"
+            ]
+        ]
+    },
+    {
+        "id": "46446b6602355c9b",
+        "type": "switch",
+        "z": "0c41db66bbe6a99a",
+        "name": "Chck",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "true"
+            },
+            {
+                "t": "false"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 1610,
+        "y": 1220,
+        "wires": [
+            [
+                "e99d0bf5973390df",
+                "cb0166a9b5060af2"
+            ],
+            [
+                "e99d0bf5973390df",
+                "7e9383bc92ce3923"
+            ]
+        ]
+    },
+    {
+        "id": "e99d0bf5973390df",
+        "type": "debug",
+        "z": "0c41db66bbe6a99a",
+        "name": "debug 9",
+        "active": true,
+        "tosidebar": false,
+        "console": false,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "payload",
+        "statusType": "auto",
+        "x": 1780,
+        "y": 1120,
+        "wires": []
+    },
+    {
+        "id": "cb81b66678f242b9",
+        "type": "debug",
+        "z": "0c41db66bbe6a99a",
+        "name": "debug 10",
+        "active": true,
+        "tosidebar": false,
+        "console": false,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "payload",
+        "statusType": "auto",
+        "x": 2220,
+        "y": 1120,
+        "wires": []
+    },
+    {
+        "id": "6f92518543c7a45a",
+        "type": "switch",
+        "z": "0c41db66bbe6a99a",
+        "name": "Chck_ManualCharge",
+        "property": "ManCharge",
+        "propertyType": "global",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "off",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "on",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 2880,
+        "y": 1300,
+        "wires": [
+            [
+                "3c41e79b9d5726ab"
+            ],
+            [
+                "f0bcfc414fe34bbf"
+            ]
+        ]
+    },
+    {
+        "id": "f8ab3c2539390e12",
+        "type": "api-current-state",
+        "z": "0c41db66bbe6a99a",
+        "name": "manual_charging_ON?",
+        "server": "f3c6dfc0.bd122",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "input_boolean.afbrudt_overskuds_opladning",
+        "state_type": "str",
+        "blockInputOverrides": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "x": 810,
+        "y": 400,
+        "wires": [
+            [
+                "df97262c0c450690"
+            ]
+        ]
+    },
+    {
+        "id": "df97262c0c450690",
+        "type": "change",
+        "z": "0c41db66bbe6a99a",
+        "name": "Saved_ManCharge",
+        "rules": [
+            {
+                "t": "set",
+                "p": "ManCharge",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1050,
+        "y": 400,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "f0bcfc414fe34bbf",
+        "type": "switch",
+        "z": "0c41db66bbe6a99a",
+        "name": "phase switch manual",
+        "property": "ManChargeEff",
+        "propertyType": "global",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "1400w - 1 fase",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "1900w - 1 fase",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "2300w - 1 fase",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "3000w - 1 fase",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "3700w - 1 fase",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "4100w - 3 faser",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "5500w - 3 faser",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "6900w - 3 faser",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "9000w - 3 faser",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "11000w - 3 faser",
+                "vt": "str"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 10,
+        "x": 3740,
+        "y": 1460,
+        "wires": [
+            [
+                "be102786ebad9427"
+            ],
+            [
+                "cbf3b4a91eef8563"
+            ],
+            [
+                "308dd079b6a34a47"
+            ],
+            [
+                "1e02269c786c3f28"
+            ],
+            [
+                "3c2818cb3ade24d6"
+            ],
+            [
+                "cc0f5209a30ef683"
+            ],
+            [
+                "aad6e7a3128d6265"
+            ],
+            [
+                "51b869421b2c8fc9"
+            ],
+            [
+                "19deb983a1d3a558"
+            ],
+            [
+                "75b1940e8b896780"
+            ]
+        ]
+    },
+    {
+        "id": "6f0951d477d2270b",
+        "type": "api-current-state",
+        "z": "0c41db66bbe6a99a",
+        "name": "manual_charging_effect",
+        "server": "f3c6dfc0.bd122",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "input_select.vaelg_manuel_opladestyrke",
+        "state_type": "str",
+        "blockInputOverrides": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "x": 810,
+        "y": 640,
+        "wires": [
+            [
+                "9919e8d339702289"
+            ]
+        ]
+    },
+    {
+        "id": "9919e8d339702289",
+        "type": "change",
+        "z": "0c41db66bbe6a99a",
+        "name": "Saved_ManChargeEff",
+        "rules": [
+            {
+                "t": "set",
+                "p": "ManChargeEff",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1060,
+        "y": 640,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "b005a20af221cab9",
+        "type": "switch",
+        "z": "0c41db66bbe6a99a",
+        "name": "1x6AMP?",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "600",
+                "vt": "str"
+            },
+            {
+                "t": "neq",
+                "v": "600",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 4480,
+        "y": 800,
+        "wires": [
+            [
+                "db85dbc4ea653e75"
+            ],
+            [
+                "b6eb60d7b3e3ff15",
+                "53579fa4b28cfddc"
+            ]
+        ]
+    },
+    {
+        "id": "ba60a9a0097db8ce",
+        "type": "inject",
+        "z": "0c41db66bbe6a99a",
+        "name": "(every 5-10 minutes) custom command by msg.payload.path",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"path\":\"/sites/751487/circuits/707481/dynamicCurrent\"}",
+        "payloadType": "json",
+        "x": 360,
+        "y": 1500,
+        "wires": [
+            [
+                "4dac53c74a2d7966"
+            ]
+        ]
+    },
+    {
+        "id": "4dac53c74a2d7966",
+        "type": "easee-rest-client",
+        "z": "0c41db66bbe6a99a",
+        "name": "",
+        "charger": "",
+        "site": "",
+        "circuit": "",
+        "configuration": "",
+        "inputs": 1,
+        "outputs": 1,
+        "x": 790,
+        "y": 1500,
+        "wires": [
+            [
+                "baaeae98f854b807"
+            ]
+        ]
+    },
+    {
+        "id": "7b216adcb66a8dc3",
+        "type": "debug",
+        "z": "0c41db66bbe6a99a",
+        "name": "command result",
+        "active": true,
+        "tosidebar": false,
+        "console": false,
+        "tostatus": true,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "payload",
+        "statusType": "auto",
+        "x": 1220,
+        "y": 1440,
+        "wires": []
+    },
+    {
+        "id": "baaeae98f854b807",
+        "type": "function",
+        "z": "0c41db66bbe6a99a",
+        "name": "Concatenate_result",
+        "func": "// Concatenate phase values into a string\nvar phaseString = '' + msg.payload.phase1 + msg.payload.phase2 + msg.payload.phase3;\n\n// Set the result as a new msg property or overwrite msg.payload\nmsg.payload = phaseString; // Overwrite payload\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1010,
+        "y": 1500,
+        "wires": [
+            [
+                "7b216adcb66a8dc3",
+                "affdfdccd24aa9f8"
+            ]
+        ]
+    },
+    {
+        "id": "affdfdccd24aa9f8",
+        "type": "change",
+        "z": "0c41db66bbe6a99a",
+        "name": "Saved_DynamicCurcuit",
+        "rules": [
+            {
+                "t": "set",
+                "p": "DynamicCurcuit",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1250,
+        "y": 1500,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "338d6e01159aa6a4",
+        "type": "switch",
+        "z": "0c41db66bbe6a99a",
+        "name": "1x8AMP?",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "800",
+                "vt": "str"
+            },
+            {
+                "t": "neq",
+                "v": "800",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 4480,
+        "y": 900,
+        "wires": [
+            [
+                "db85dbc4ea653e75"
+            ],
+            [
+                "76bae5d030c4c791",
+                "c5c4cb6311045c32"
+            ]
+        ]
+    },
+    {
+        "id": "c7d8e50f271f3773",
+        "type": "switch",
+        "z": "0c41db66bbe6a99a",
+        "name": "1x10AMP?",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "1000",
+                "vt": "str"
+            },
+            {
+                "t": "neq",
+                "v": "1000",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 4490,
+        "y": 1000,
+        "wires": [
+            [
+                "db85dbc4ea653e75"
+            ],
+            [
+                "be1ede9a13a64c8b",
+                "ae8609d44159f22a"
+            ]
+        ]
+    },
+    {
+        "id": "9a097989068e37d4",
+        "type": "switch",
+        "z": "0c41db66bbe6a99a",
+        "name": "1x13AMP?",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "1300",
+                "vt": "str"
+            },
+            {
+                "t": "neq",
+                "v": "1300",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 4490,
+        "y": 1100,
+        "wires": [
+            [
+                "db85dbc4ea653e75"
+            ],
+            [
+                "dc9559c973f7a25f",
+                "39b625c4d1ff1719"
+            ]
+        ]
+    },
+    {
+        "id": "de7749ec9e763e7f",
+        "type": "switch",
+        "z": "0c41db66bbe6a99a",
+        "name": "1x16AMP?",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "1600",
+                "vt": "str"
+            },
+            {
+                "t": "neq",
+                "v": "1600",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 4490,
+        "y": 1200,
+        "wires": [
+            [
+                "db85dbc4ea653e75"
+            ],
+            [
+                "9a8e24fa06e068f7",
+                "eb1d76991907109f"
+            ]
+        ]
+    },
+    {
+        "id": "b4bd1bcf1e2a2980",
+        "type": "switch",
+        "z": "0c41db66bbe6a99a",
+        "name": "3x6AMP?",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "666",
+                "vt": "str"
+            },
+            {
+                "t": "neq",
+                "v": "666",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 4480,
+        "y": 1300,
+        "wires": [
+            [
+                "db85dbc4ea653e75"
+            ],
+            [
+                "9e0eaab5449cec41",
+                "08bc4a3d78d1cad0"
+            ]
+        ]
+    },
+    {
+        "id": "3ef4208ebbb6a110",
+        "type": "switch",
+        "z": "0c41db66bbe6a99a",
+        "name": "3x8AMP?",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "888",
+                "vt": "str"
+            },
+            {
+                "t": "neq",
+                "v": "888",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 4480,
+        "y": 1400,
+        "wires": [
+            [
+                "db85dbc4ea653e75"
+            ],
+            [
+                "7cc1246186ba33c4",
+                "225ce22c199951c6"
+            ]
+        ]
+    },
+    {
+        "id": "9e1de5756cc07564",
+        "type": "switch",
+        "z": "0c41db66bbe6a99a",
+        "name": "3x10AMP?",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "101010",
+                "vt": "str"
+            },
+            {
+                "t": "neq",
+                "v": "101010",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 4490,
+        "y": 1500,
+        "wires": [
+            [
+                "db85dbc4ea653e75"
+            ],
+            [
+                "bd3f15af68b0348d",
+                "473893c98a21d57b"
+            ]
+        ]
+    },
+    {
+        "id": "83ef4ba52b667cd0",
+        "type": "switch",
+        "z": "0c41db66bbe6a99a",
+        "name": "3x13AMP?",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "131313",
+                "vt": "str"
+            },
+            {
+                "t": "neq",
+                "v": "131313",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 4490,
+        "y": 1600,
+        "wires": [
+            [
+                "db85dbc4ea653e75"
+            ],
+            [
+                "184038eb018782a0",
+                "dc4f30c4bf394e7e"
+            ]
+        ]
+    },
+    {
+        "id": "b40d6ccc54066f29",
+        "type": "switch",
+        "z": "0c41db66bbe6a99a",
+        "name": "3x16AMP?",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "161616",
+                "vt": "str"
+            },
+            {
+                "t": "neq",
+                "v": "161616",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 4490,
+        "y": 1700,
+        "wires": [
+            [
+                "db85dbc4ea653e75"
+            ],
+            [
+                "f6b3d12744ce21fa",
+                "53988fbe116578de"
+            ]
+        ]
+    },
+    {
+        "id": "db85dbc4ea653e75",
+        "type": "debug",
+        "z": "0c41db66bbe6a99a",
+        "name": "debug NoChange",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "payload",
+        "statusType": "auto",
+        "x": 4770,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "23472652819af890",
+        "type": "change",
+        "z": "0c41db66bbe6a99a",
+        "name": "Power Generation",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "power_generation",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 2350,
+        "y": 1340,
+        "wires": [
+            [
+                "263307c9a0bd8810"
+            ]
+        ]
+    },
+    {
+        "id": "910efb8970b342cf",
+        "type": "change",
+        "z": "0c41db66bbe6a99a",
+        "name": "Charger ID",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "charger_id",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "EHX6GQT4",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 2350,
+        "y": 1420,
+        "wires": [
+            [
+                "263307c9a0bd8810"
+            ]
+        ]
+    },
+    {
+        "id": "263307c9a0bd8810",
+        "type": "join",
+        "z": "0c41db66bbe6a99a",
+        "name": "",
+        "mode": "custom",
+        "build": "object",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": true,
+        "timeout": "",
+        "count": "2",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "",
+        "reduceFixup": "",
+        "x": 2530,
+        "y": 1400,
+        "wires": [
+            [
+                "7e830af82b7e45cc"
+            ]
+        ]
+    },
+    {
+        "id": "7e830af82b7e45cc",
+        "type": "api-call-service",
+        "z": "0c41db66bbe6a99a",
+        "name": "3x6AMP",
+        "server": "694f223e.a8eb6c",
+        "version": 5,
+        "debugenabled": true,
+        "domain": "easee",
+        "service": "set_circuit_dynamic_limit",
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [],
+        "data": "{\"charger_id\":\"{{payload.charger_id}}\",\"currentP1\":6,\"currentP2\":6,\"currentP3\":6}",
+        "dataType": "json",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "x": 2680,
+        "y": 1400,
+        "wires": [
+            [
+                "caad51b705976d1f"
+            ]
+        ]
+    },
+    {
+        "id": "caad51b705976d1f",
+        "type": "delay",
+        "z": "0c41db66bbe6a99a",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 2340,
+        "y": 1660,
+        "wires": [
+            [
+                "348266e00446b71b"
+            ]
+        ]
+    },
+    {
+        "id": "7e9383bc92ce3923",
+        "type": "change",
+        "z": "0c41db66bbe6a99a",
+        "name": "get_car_status",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "CarStatus",
+                "tot": "global"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1820,
+        "y": 1220,
+        "wires": [
+            [
+                "5ed291e8e45650d1"
+            ]
+        ]
+    },
+    {
+        "id": "5c050efbe2b6849b",
+        "type": "easee-rest-client",
+        "z": "0c41db66bbe6a99a",
+        "name": "",
+        "charger": "",
+        "site": "",
+        "circuit": "",
+        "configuration": "",
+        "inputs": 1,
+        "outputs": 1,
+        "x": 2130,
+        "y": 1420,
+        "wires": [
+            [
+                "910efb8970b342cf",
+                "23472652819af890"
+            ]
+        ]
+    },
+    {
+        "id": "4dbad37bd2707287",
+        "type": "change",
+        "z": "0c41db66bbe6a99a",
+        "name": "Login",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "login",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1930,
+        "y": 1420,
+        "wires": [
+            [
+                "5c050efbe2b6849b"
+            ]
+        ]
+    },
+    {
+        "id": "cb9930be8b4750e4",
+        "type": "start-charge",
+        "z": "0c41db66bbe6a99a",
+        "name": "Start Charging",
+        "bluelinky": "",
+        "x": 2940,
+        "y": 1800,
+        "wires": [
+            [
+                "caad51b705976d1f"
+            ]
+        ]
+    },
+    {
+        "id": "2c62ac10e604e538",
+        "type": "api-current-state",
+        "z": "0c41db66bbe6a99a",
+        "name": "has_the_sun_set?",
+        "server": "f3c6dfc0.bd122",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "sun.sun",
+        "state_type": "str",
+        "blockInputOverrides": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "x": 790,
+        "y": 700,
+        "wires": [
+            [
+                "9591940a19431342"
+            ]
+        ]
+    },
+    {
+        "id": "9591940a19431342",
+        "type": "change",
+        "z": "0c41db66bbe6a99a",
+        "name": "Saved_SunStatus",
+        "rules": [
+            {
+                "t": "set",
+                "p": "SunStatus",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1050,
+        "y": 700,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "9279482d8ba7ecba",
+        "type": "api-current-state",
+        "z": "0c41db66bbe6a99a",
+        "name": "timed_charge",
+        "server": "f3c6dfc0.bd122",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "input_boolean.oplad_efter_solnedgang",
+        "state_type": "str",
+        "blockInputOverrides": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "x": 780,
+        "y": 760,
+        "wires": [
+            [
+                "378a9e5991d7ed45"
+            ]
+        ]
+    },
+    {
+        "id": "378a9e5991d7ed45",
+        "type": "change",
+        "z": "0c41db66bbe6a99a",
+        "name": "Saved_Timed_Charge",
+        "rules": [
+            {
+                "t": "set",
+                "p": "TimedCharge",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1060,
+        "y": 760,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "765c6bdf572053a0",
+        "type": "change",
+        "z": "0c41db66bbe6a99a",
+        "name": "get_Man_char",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "ManCharge",
+                "tot": "global"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 820,
+        "y": 1200,
+        "wires": [
+            [
+                "cbaf6bbb8d5086c5"
+            ]
+        ]
+    },
+    {
+        "id": "cbaf6bbb8d5086c5",
+        "type": "switch",
+        "z": "0c41db66bbe6a99a",
+        "name": "Chck",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "on",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "off",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 970,
+        "y": 1200,
+        "wires": [
+            [
+                "b0ff2213377116b8"
+            ],
+            [
+                "5dbec3a5698a8506"
+            ]
+        ]
+    },
+    {
+        "id": "5dbec3a5698a8506",
+        "type": "change",
+        "z": "0c41db66bbe6a99a",
+        "name": "get_sun_status",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "SunStatus",
+                "tot": "global"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1100,
+        "y": 1300,
+        "wires": [
+            [
+                "b072a4ca79b2a98a"
+            ]
+        ]
+    },
+    {
+        "id": "b072a4ca79b2a98a",
+        "type": "switch",
+        "z": "0c41db66bbe6a99a",
+        "name": "Chck",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "above_horizon",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "below_horizon",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 1270,
+        "y": 1300,
+        "wires": [
+            [
+                "3723ebb94f0f98a1"
+            ],
+            [
+                "cb0166a9b5060af2"
+            ]
+        ]
+    },
+    {
+        "id": "e0f9aa189d9be45c",
+        "type": "api-current-state",
+        "z": "0c41db66bbe6a99a",
+        "name": "kona_connected?",
+        "server": "f3c6dfc0.bd122",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "binary_sensor.kona_ev_battery_plug",
+        "state_type": "str",
+        "blockInputOverrides": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "x": 790,
+        "y": 820,
+        "wires": [
+            [
+                "d776b11ddd38357d"
+            ]
+        ]
+    },
+    {
+        "id": "d776b11ddd38357d",
+        "type": "change",
+        "z": "0c41db66bbe6a99a",
+        "name": "Saved_KonaConnection",
+        "rules": [
+            {
+                "t": "set",
+                "p": "KonaConnection",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1070,
+        "y": 820,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "57ebc7c612493521",
+        "type": "switch",
+        "z": "0c41db66bbe6a99a",
+        "name": "Chck",
+        "property": "KonaConnection",
+        "propertyType": "global",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "on",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "off",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 2710,
+        "y": 1800,
+        "wires": [
+            [
+                "cb9930be8b4750e4"
+            ],
+            [
+                "caad51b705976d1f"
+            ]
+        ]
+    },
+    {
+        "id": "ae59facfc6791b87",
+        "type": "api-current-state",
+        "z": "0c41db66bbe6a99a",
+        "name": "excess_solar_power_30_min_avg_2",
+        "server": "f3c6dfc0.bd122",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "sensor.excess_solar_energy_30_min_avg_2",
+        "state_type": "num",
+        "blockInputOverrides": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "x": 850,
+        "y": 340,
+        "wires": [
+            [
+                "7946eba4ebc19839"
+            ]
+        ]
+    },
+    {
+        "id": "7946eba4ebc19839",
+        "type": "change",
+        "z": "0c41db66bbe6a99a",
+        "name": "Saved_Excess_Solar_2",
+        "rules": [
+            {
+                "t": "set",
+                "p": "ExcessSolar_2",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1130,
+        "y": 340,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e4846691d0ce500d",
+        "type": "change",
+        "z": "0c41db66bbe6a99a",
+        "name": "stop_charging",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "stop_charging",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 2160,
+        "y": 1040,
+        "wires": [
+            [
+                "d457f164231ce196"
+            ]
+        ]
+    },
+    {
+        "id": "d457f164231ce196",
+        "type": "easee-rest-client",
+        "z": "0c41db66bbe6a99a",
+        "name": "Easee Charger",
+        "charger": "ABC1DE2",
+        "site": "123456",
+        "circuit": "789012",
+        "configuration": "",
+        "inputs": 1,
+        "outputs": 1,
+        "x": 2360,
+        "y": 1040,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "6ab28479f41d8e9e",
+        "type": "switch",
+        "z": "0c41db66bbe6a99a",
+        "name": "chck_status",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "charging",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "awaiting_start",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "ready_to_charge",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "awaiting_authorization",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "disconnected",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 5,
+        "x": 1950,
+        "y": 1040,
+        "wires": [
+            [
+                "e4846691d0ce500d"
+            ],
+            [],
+            [],
+            [],
+            []
+        ],
+        "outputLabels": [
+            "charging",
+            "awaiting_start",
+            "ready_to_charge",
+            "awaiting_authorization",
+            "disconnected"
+        ]
+    },
+    {
+        "id": "cb0166a9b5060af2",
+        "type": "change",
+        "z": "0c41db66bbe6a99a",
+        "name": "get_car_status",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "CarStatus",
+                "tot": "global"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1760,
+        "y": 1040,
+        "wires": [
+            [
+                "6ab28479f41d8e9e"
+            ]
+        ]
+    },
+    {
+        "id": "3c41e79b9d5726ab",
+        "type": "switch",
+        "z": "0c41db66bbe6a99a",
+        "name": "Chck",
+        "property": "SunStatus",
+        "propertyType": "global",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "above_horizon",
+                "vt": "str"
+            },
+            {
+                "t": "neq",
+                "v": "above_horizon",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 2970,
+        "y": 1160,
+        "wires": [
+            [
+                "2fca436eb3224739"
+            ],
+            [
+                "3132fd153e95487e"
+            ]
+        ]
+    },
+    {
+        "id": "0e3d3a4cd69d305e",
+        "type": "change",
+        "z": "0c41db66bbe6a99a",
+        "name": "stop_charging",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "stop_charging",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 3560,
+        "y": 1300,
+        "wires": [
+            [
+                "953f94ef9a098764"
+            ]
+        ]
+    },
+    {
+        "id": "953f94ef9a098764",
+        "type": "easee-rest-client",
+        "z": "0c41db66bbe6a99a",
+        "name": "Easee Charger",
+        "charger": "ABC1DE2",
+        "site": "123456",
+        "circuit": "789012",
+        "configuration": "",
+        "inputs": 1,
+        "outputs": 1,
+        "x": 3760,
+        "y": 1300,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "4efebd5121e89db2",
+        "type": "switch",
+        "z": "0c41db66bbe6a99a",
+        "name": "chck_status",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "charging",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "awaiting_start",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "ready_to_charge",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "awaiting_authorization",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "disconnected",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 5,
+        "x": 3350,
+        "y": 1300,
+        "wires": [
+            [
+                "0e3d3a4cd69d305e"
+            ],
+            [],
+            [],
+            [],
+            []
+        ],
+        "outputLabels": [
+            "charging",
+            "awaiting_start",
+            "ready_to_charge",
+            "awaiting_authorization",
+            "disconnected"
+        ]
+    },
+    {
+        "id": "3132fd153e95487e",
+        "type": "change",
+        "z": "0c41db66bbe6a99a",
+        "name": "get_car_status",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "CarStatus",
+                "tot": "global"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 3160,
+        "y": 1300,
+        "wires": [
+            [
+                "4efebd5121e89db2"
+            ]
+        ]
+    },
+    {
+        "id": "09d3d3a277d7174e",
+        "type": "switch",
+        "z": "0c41db66bbe6a99a",
+        "name": "phase switch auto 2",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "lt",
+                "v": "500",
+                "vt": "num"
+            },
+            {
+                "t": "btwn",
+                "v": "500",
+                "vt": "num",
+                "v2": "1380",
+                "v2t": "num"
+            },
+            {
+                "t": "btwn",
+                "v": "1381",
+                "vt": "num",
+                "v2": "1840",
+                "v2t": "num"
+            },
+            {
+                "t": "btwn",
+                "v": "1841",
+                "vt": "num",
+                "v2": "2300",
+                "v2t": "num"
+            },
+            {
+                "t": "btwn",
+                "v": "2301",
+                "vt": "num",
+                "v2": "2990",
+                "v2t": "num"
+            },
+            {
+                "t": "btwn",
+                "v": "2991",
+                "vt": "num",
+                "v2": "3680",
+                "v2t": "num"
+            },
+            {
+                "t": "btwn",
+                "v": "3681",
+                "vt": "num",
+                "v2": "4140",
+                "v2t": "num"
+            },
+            {
+                "t": "btwn",
+                "v": "4141",
+                "vt": "num",
+                "v2": "5520",
+                "v2t": "num"
+            },
+            {
+                "t": "btwn",
+                "v": "5521",
+                "vt": "num",
+                "v2": "6900",
+                "v2t": "num"
+            },
+            {
+                "t": "btwn",
+                "v": "6901",
+                "vt": "num",
+                "v2": "8970",
+                "v2t": "num"
+            },
+            {
+                "t": "gte",
+                "v": "8971",
+                "vt": "str"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 11,
+        "x": 3740,
+        "y": 940,
+        "wires": [
+            [
+                "b75b4670a15c6f47"
+            ],
+            [
+                "be102786ebad9427"
+            ],
+            [
+                "cbf3b4a91eef8563"
+            ],
+            [
+                "308dd079b6a34a47"
+            ],
+            [
+                "1e02269c786c3f28"
+            ],
+            [
+                "3c2818cb3ade24d6"
+            ],
+            [
+                "cc0f5209a30ef683"
+            ],
+            [
+                "aad6e7a3128d6265"
+            ],
+            [
+                "51b869421b2c8fc9"
+            ],
+            [
+                "19deb983a1d3a558"
+            ],
+            [
+                "75b1940e8b896780"
+            ]
+        ]
+    },
+    {
+        "id": "2fca436eb3224739",
+        "type": "switch",
+        "z": "0c41db66bbe6a99a",
+        "name": "Priority?",
+        "property": "ev_priority",
+        "propertyType": "global",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "on",
+                "vt": "str"
+            },
+            {
+                "t": "neq",
+                "v": "off",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 3100,
+        "y": 1040,
+        "wires": [
+            [
+                "83d33bb45a61f992"
+            ],
+            [
+                "bb90a294896575c3"
+            ]
+        ]
+    },
+    {
+        "id": "3007150f3ad1c3cd",
+        "type": "api-current-state",
+        "z": "0c41db66bbe6a99a",
+        "name": "prioritice_ev",
+        "server": "f3c6dfc0.bd122",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "input_boolean.prioriter_elbil_opladning",
+        "state_type": "str",
+        "blockInputOverrides": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "x": 770,
+        "y": 880,
+        "wires": [
+            [
+                "2e3713ab9d3d8e16"
+            ]
+        ]
+    },
+    {
+        "id": "2e3713ab9d3d8e16",
+        "type": "change",
+        "z": "0c41db66bbe6a99a",
+        "name": "Saved_Priority",
+        "rules": [
+            {
+                "t": "set",
+                "p": "ev_priority",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1040,
+        "y": 880,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "3b53cc3d4d4a4fbe",
+        "type": "api-current-state",
+        "z": "0c41db66bbe6a99a",
+        "name": "charge_start",
+        "server": "f3c6dfc0.bd122",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "input_datetime.opladning_start",
+        "state_type": "str",
+        "blockInputOverrides": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "x": 770,
+        "y": 1000,
+        "wires": [
+            [
+                "c56420063ac7c9b5",
+                "a9a926d0d572b22d"
+            ]
+        ]
+    },
+    {
+        "id": "1237b572737e65b3",
+        "type": "change",
+        "z": "0c41db66bbe6a99a",
+        "name": "Saved_Charge_Start",
+        "rules": [
+            {
+                "t": "set",
+                "p": "ChargeStart",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1200,
+        "y": 1000,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "069fa57d70853ebc",
+        "type": "api-current-state",
+        "z": "0c41db66bbe6a99a",
+        "name": "charge_end",
+        "server": "f3c6dfc0.bd122",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "input_datetime.opladning_slut",
+        "state_type": "str",
+        "blockInputOverrides": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "date"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "x": 770,
+        "y": 1060,
+        "wires": [
+            [
+                "30812a026c2fe283"
+            ]
+        ]
+    },
+    {
+        "id": "537d0ede5c336690",
+        "type": "change",
+        "z": "0c41db66bbe6a99a",
+        "name": "Saved_Charge_End",
+        "rules": [
+            {
+                "t": "set",
+                "p": "ChargeEnd",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1200,
+        "y": 1060,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "b0ff2213377116b8",
+        "type": "switch",
+        "z": "0c41db66bbe6a99a",
+        "name": "Chck",
+        "property": "TimedCharge",
+        "propertyType": "global",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "on",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "off",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 1110,
+        "y": 1200,
+        "wires": [
+            [
+                "82cf879509563ed2"
+            ],
+            [
+                "3723ebb94f0f98a1"
+            ]
+        ]
+    },
+    {
+        "id": "82cf879509563ed2",
+        "type": "function",
+        "z": "0c41db66bbe6a99a",
+        "name": "Chck_time",
+        "func": "// Function node code\nconst inputDate = global.get('Timestamp_charge'); // Get the timestamp from global context\nconst date = new Date(inputDate);\n\n// Define start and end times within the day (in minutes since midnight)\nconst chargeStartTime = global.get('ChargeStart');\nconst chargeEndTime = global.get('ChargeEnd');\n\nlet inputTime = date.getTime();\n\n// Check if the input time falls within the defined ranges\nlet timeCategory;\nif (inputTime >= chargeStartTime && inputTime < chargeEndTime) {\n    timeCategory = 'charge';\n} else {\n    timeCategory = 'no_charge';\n}\n\n// Set the output message payload\nmsg.payload = timeCategory;\n\n// Return the message\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1250,
+        "y": 1140,
+        "wires": [
+            [
+                "758c97fd4ab9c63c"
+            ]
+        ]
+    },
+    {
+        "id": "758c97fd4ab9c63c",
+        "type": "switch",
+        "z": "0c41db66bbe6a99a",
+        "name": "Chck",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "no_charge",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "charge",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 1410,
+        "y": 1140,
+        "wires": [
+            [
+                "cb0166a9b5060af2"
+            ],
+            [
+                "3723ebb94f0f98a1"
+            ]
+        ]
+    },
+    {
+        "id": "a2e7f0102f91233f",
+        "type": "change",
+        "z": "0c41db66bbe6a99a",
+        "name": "Saved_Timestamp",
+        "rules": [
+            {
+                "t": "set",
+                "p": "Timestamp_charge",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 790,
+        "y": 1120,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c56420063ac7c9b5",
+        "type": "function",
+        "z": "0c41db66bbe6a99a",
+        "name": "conv_to_timestamp",
+        "func": "// Assuming the time is in msg.payload in the format \"hh:mm:ss\"\nlet currentTime = msg.payload; // \"hh:mm:ss\"\n\n// Get the current date\nlet currentDate = new Date();\n\n// Extract hours, minutes, and seconds from the current time\nlet [hours, minutes, seconds] = currentTime.split(\":\");\n\n// Set the hours, minutes, and seconds for the current date\ncurrentDate.setHours(hours);\ncurrentDate.setMinutes(minutes);\ncurrentDate.setSeconds(seconds);\n\n// Convert the current date with the updated time to a timestamp\nmsg.payload = currentDate.getTime(); // This is the timestamp\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 970,
+        "y": 1000,
+        "wires": [
+            [
+                "1237b572737e65b3"
+            ]
+        ]
+    },
+    {
+        "id": "30812a026c2fe283",
+        "type": "function",
+        "z": "0c41db66bbe6a99a",
+        "name": "conv_to_timestamp",
+        "func": "// Assuming the time is in msg.payload in the format \"hh:mm:ss\"\nlet currentTime = msg.payload; // \"hh:mm:ss\"\n\n// Get the current date\nlet currentDate = new Date();\n\n// Extract hours, minutes, and seconds from the current time\nlet [hours, minutes, seconds] = currentTime.split(\":\");\n\n// Set the hours, minutes, and seconds for the current date\ncurrentDate.setHours(hours, minutes, seconds, 0);\n\n// Retrieve ChargeStartTime from global context and parse it as a date object\nlet chargeStartTimeStr = global.get(\"ChargeStartTime\"); // Expected format \"hh:mm:ss\"\nlet chargeStartDate = new Date(currentDate.getTime()); // Clone currentDate to keep date part\nlet [startHours, startMinutes, startSeconds] = chargeStartTimeStr.split(\":\");\nchargeStartDate.setHours(startHours, startMinutes, startSeconds, 0);\n\n// Compare times and adjust currentDate if chargeStartTime is earlier than currentTime\nif (chargeStartDate > currentDate) {\n    // Charge start time is less than current time, add 1 day to currentDate\n    currentDate.setDate(currentDate.getDate() + 1);\n}\n\n// Convert the adjusted currentDate to a timestamp\nmsg.payload = currentDate.getTime(); // This is the adjusted timestamp\n\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 970,
+        "y": 1060,
+        "wires": [
+            [
+                "537d0ede5c336690"
+            ]
+        ]
+    },
+    {
+        "id": "a9a926d0d572b22d",
+        "type": "change",
+        "z": "0c41db66bbe6a99a",
+        "name": "Saved_Charge_Start_Time",
+        "rules": [
+            {
+                "t": "set",
+                "p": "ChargeStartTime",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1000,
+        "y": 940,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "ca4543fb7745d8d9",
+        "type": "switch",
+        "z": "0c41db66bbe6a99a",
+        "name": "Pause?",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "000",
+                "vt": "str"
+            },
+            {
+                "t": "neq",
+                "v": "000",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 4480,
+        "y": 700,
+        "wires": [
+            [
+                "db85dbc4ea653e75"
+            ],
+            [
+                "9133ce28c5e50402",
+                "e1e29f74411e6b48"
+            ]
+        ]
+    },
+    {
+        "id": "2a8e1f62d8a63167",
+        "type": "debug",
+        "z": "0c41db66bbe6a99a",
+        "name": "debug_test1",
+        "active": true,
+        "tosidebar": false,
+        "console": false,
+        "tostatus": true,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "payload",
+        "statusType": "auto",
+        "x": 4490,
+        "y": 20,
+        "wires": []
+    },
+    {
+        "id": "42750cf69f9fbfa5",
+        "type": "debug",
+        "z": "0c41db66bbe6a99a",
+        "name": "debug_test2",
+        "active": true,
+        "tosidebar": false,
+        "console": false,
+        "tostatus": true,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "payload",
+        "statusType": "auto",
+        "x": 4490,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "652449978da1fdb5",
+        "type": "debug",
+        "z": "0c41db66bbe6a99a",
+        "name": "debug_test3",
+        "active": true,
+        "tosidebar": false,
+        "console": false,
+        "tostatus": true,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "payload",
+        "statusType": "auto",
+        "x": 4490,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "4f36171ee2eeaf9c",
+        "type": "debug",
+        "z": "0c41db66bbe6a99a",
+        "name": "debug_test5",
+        "active": true,
+        "tosidebar": false,
+        "console": false,
+        "tostatus": true,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "payload",
+        "statusType": "auto",
+        "x": 4490,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "3a2afdb722ac6079",
+        "type": "debug",
+        "z": "0c41db66bbe6a99a",
+        "name": "debug_test4",
+        "active": true,
+        "tosidebar": false,
+        "console": false,
+        "tostatus": true,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "payload",
+        "statusType": "auto",
+        "x": 4490,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "26c374937f1986ec",
+        "type": "debug",
+        "z": "0c41db66bbe6a99a",
+        "name": "debug_test6",
+        "active": true,
+        "tosidebar": false,
+        "console": false,
+        "tostatus": true,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "payload",
+        "statusType": "auto",
+        "x": 4490,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "232b269d97d38cce",
+        "type": "debug",
+        "z": "0c41db66bbe6a99a",
+        "name": "debug_test7",
+        "active": true,
+        "tosidebar": false,
+        "console": false,
+        "tostatus": true,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "payload",
+        "statusType": "auto",
+        "x": 4490,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "b893227731cc8b91",
+        "type": "debug",
+        "z": "0c41db66bbe6a99a",
+        "name": "debug_test8",
+        "active": true,
+        "tosidebar": false,
+        "console": false,
+        "tostatus": true,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "payload",
+        "statusType": "auto",
+        "x": 4490,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "665cf9e180a87104",
+        "type": "debug",
+        "z": "0c41db66bbe6a99a",
+        "name": "debug_test9",
+        "active": true,
+        "tosidebar": false,
+        "console": false,
+        "tostatus": true,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "payload",
+        "statusType": "auto",
+        "x": 4490,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "936397a95d987962",
+        "type": "debug",
+        "z": "0c41db66bbe6a99a",
+        "name": "debug_test10",
+        "active": true,
+        "tosidebar": false,
+        "console": false,
+        "tostatus": true,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "payload",
+        "statusType": "auto",
+        "x": 4500,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "6fffe2512af87a78",
+        "type": "debug",
+        "z": "0c41db66bbe6a99a",
+        "name": "debug_test11",
+        "active": true,
+        "tosidebar": false,
+        "console": false,
+        "tostatus": true,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "payload",
+        "statusType": "auto",
+        "x": 4500,
+        "y": 620,
+        "wires": []
+    },
+    {
+        "id": "83d33bb45a61f992",
+        "type": "change",
+        "z": "0c41db66bbe6a99a",
+        "name": "get_ExcessSolar_2",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "ExcessSolar_2",
+                "tot": "global"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 3310,
+        "y": 940,
+        "wires": [
+            [
+                "09d3d3a277d7174e"
+            ]
+        ]
+    },
+    {
+        "id": "b75b4670a15c6f47",
+        "type": "change",
+        "z": "0c41db66bbe6a99a",
+        "name": "get_DynamicCurcuit",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "DynamicCurcuit",
+                "tot": "global"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 4280,
+        "y": 700,
+        "wires": [
+            [
+                "ca4543fb7745d8d9",
+                "2a8e1f62d8a63167"
+            ]
+        ]
+    },
+    {
+        "id": "be102786ebad9427",
+        "type": "change",
+        "z": "0c41db66bbe6a99a",
+        "name": "get_DynamicCurcuit",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "DynamicCurcuit",
+                "tot": "global"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 4280,
+        "y": 800,
+        "wires": [
+            [
+                "b005a20af221cab9",
+                "42750cf69f9fbfa5"
+            ]
+        ]
+    },
+    {
+        "id": "cbf3b4a91eef8563",
+        "type": "change",
+        "z": "0c41db66bbe6a99a",
+        "name": "get_DynamicCurcuit",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "DynamicCurcuit",
+                "tot": "global"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 4280,
+        "y": 900,
+        "wires": [
+            [
+                "338d6e01159aa6a4",
+                "652449978da1fdb5"
+            ]
+        ]
+    },
+    {
+        "id": "308dd079b6a34a47",
+        "type": "change",
+        "z": "0c41db66bbe6a99a",
+        "name": "get_DynamicCurcuit",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "DynamicCurcuit",
+                "tot": "global"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 4280,
+        "y": 1000,
+        "wires": [
+            [
+                "c7d8e50f271f3773",
+                "3a2afdb722ac6079"
+            ]
+        ]
+    },
+    {
+        "id": "1e02269c786c3f28",
+        "type": "change",
+        "z": "0c41db66bbe6a99a",
+        "name": "get_DynamicCurcuit",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "DynamicCurcuit",
+                "tot": "global"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 4280,
+        "y": 1100,
+        "wires": [
+            [
+                "9a097989068e37d4",
+                "4f36171ee2eeaf9c"
+            ]
+        ]
+    },
+    {
+        "id": "3c2818cb3ade24d6",
+        "type": "change",
+        "z": "0c41db66bbe6a99a",
+        "name": "get_DynamicCurcuit",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "DynamicCurcuit",
+                "tot": "global"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 4280,
+        "y": 1200,
+        "wires": [
+            [
+                "de7749ec9e763e7f",
+                "26c374937f1986ec"
+            ]
+        ]
+    },
+    {
+        "id": "cc0f5209a30ef683",
+        "type": "change",
+        "z": "0c41db66bbe6a99a",
+        "name": "get_DynamicCurcuit",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "DynamicCurcuit",
+                "tot": "global"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 4280,
+        "y": 1300,
+        "wires": [
+            [
+                "b4bd1bcf1e2a2980",
+                "232b269d97d38cce"
+            ]
+        ]
+    },
+    {
+        "id": "aad6e7a3128d6265",
+        "type": "change",
+        "z": "0c41db66bbe6a99a",
+        "name": "get_DynamicCurcuit",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "DynamicCurcuit",
+                "tot": "global"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 4280,
+        "y": 1400,
+        "wires": [
+            [
+                "3ef4208ebbb6a110",
+                "b893227731cc8b91"
+            ]
+        ]
+    },
+    {
+        "id": "51b869421b2c8fc9",
+        "type": "change",
+        "z": "0c41db66bbe6a99a",
+        "name": "get_DynamicCurcuit",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "DynamicCurcuit",
+                "tot": "global"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 4280,
+        "y": 1500,
+        "wires": [
+            [
+                "9e1de5756cc07564",
+                "665cf9e180a87104"
+            ]
+        ]
+    },
+    {
+        "id": "19deb983a1d3a558",
+        "type": "change",
+        "z": "0c41db66bbe6a99a",
+        "name": "get_DynamicCurcuit",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "DynamicCurcuit",
+                "tot": "global"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 4280,
+        "y": 1600,
+        "wires": [
+            [
+                "83ef4ba52b667cd0",
+                "936397a95d987962"
+            ]
+        ]
+    },
+    {
+        "id": "75b1940e8b896780",
+        "type": "change",
+        "z": "0c41db66bbe6a99a",
+        "name": "get_DynamicCurcuit",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "DynamicCurcuit",
+                "tot": "global"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 4280,
+        "y": 1700,
+        "wires": [
+            [
+                "b40d6ccc54066f29",
+                "6fffe2512af87a78"
+            ]
+        ]
+    },
+    {
+        "id": "9133ce28c5e50402",
+        "type": "change",
+        "z": "0c41db66bbe6a99a",
+        "name": "Power Generation",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "power_generation",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 4770,
+        "y": 680,
+        "wires": [
+            [
+                "55dfb767623dc19b"
+            ]
+        ]
+    },
+    {
+        "id": "e1e29f74411e6b48",
+        "type": "change",
+        "z": "0c41db66bbe6a99a",
+        "name": "Charger ID",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "charger_id",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "ABC1DE2",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 4750,
+        "y": 720,
+        "wires": [
+            [
+                "55dfb767623dc19b"
+            ]
+        ]
+    },
+    {
+        "id": "55dfb767623dc19b",
+        "type": "join",
+        "z": "0c41db66bbe6a99a",
+        "name": "",
+        "mode": "custom",
+        "build": "object",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": true,
+        "timeout": "",
+        "count": "2",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "",
+        "reduceFixup": "",
+        "x": 4930,
+        "y": 720,
+        "wires": [
+            [
+                "642a13f345468610"
+            ]
+        ]
+    },
+    {
+        "id": "b6eb60d7b3e3ff15",
+        "type": "change",
+        "z": "0c41db66bbe6a99a",
+        "name": "Power Generation",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "power_generation",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 4770,
+        "y": 780,
+        "wires": [
+            [
+                "97f7063633ade4ec"
+            ]
+        ]
+    },
+    {
+        "id": "53579fa4b28cfddc",
+        "type": "change",
+        "z": "0c41db66bbe6a99a",
+        "name": "Charger ID",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "charger_id",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "ABC1DE2",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 4750,
+        "y": 820,
+        "wires": [
+            [
+                "97f7063633ade4ec"
+            ]
+        ]
+    },
+    {
+        "id": "97f7063633ade4ec",
+        "type": "join",
+        "z": "0c41db66bbe6a99a",
+        "name": "",
+        "mode": "custom",
+        "build": "object",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": true,
+        "timeout": "",
+        "count": "2",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "",
+        "reduceFixup": "",
+        "x": 4930,
+        "y": 820,
+        "wires": [
+            [
+                "f6395d52d56b56ca"
+            ]
+        ]
+    },
+    {
+        "id": "76bae5d030c4c791",
+        "type": "change",
+        "z": "0c41db66bbe6a99a",
+        "name": "Power Generation",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "power_generation",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 4770,
+        "y": 880,
+        "wires": [
+            [
+                "1b94965adc509656"
+            ]
+        ]
+    },
+    {
+        "id": "c5c4cb6311045c32",
+        "type": "change",
+        "z": "0c41db66bbe6a99a",
+        "name": "Charger ID",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "charger_id",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "ABC1DE2",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 4750,
+        "y": 920,
+        "wires": [
+            [
+                "1b94965adc509656"
+            ]
+        ]
+    },
+    {
+        "id": "1b94965adc509656",
+        "type": "join",
+        "z": "0c41db66bbe6a99a",
+        "name": "",
+        "mode": "custom",
+        "build": "object",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": true,
+        "timeout": "",
+        "count": "2",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "",
+        "reduceFixup": "",
+        "x": 4930,
+        "y": 920,
+        "wires": [
+            [
+                "1942ab2a59b9c414"
+            ]
+        ]
+    },
+    {
+        "id": "be1ede9a13a64c8b",
+        "type": "change",
+        "z": "0c41db66bbe6a99a",
+        "name": "Power Generation",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "power_generation",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 4770,
+        "y": 980,
+        "wires": [
+            [
+                "3e7d628d0a25f367"
+            ]
+        ]
+    },
+    {
+        "id": "ae8609d44159f22a",
+        "type": "change",
+        "z": "0c41db66bbe6a99a",
+        "name": "Charger ID",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "charger_id",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "ABC1DE2",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 4750,
+        "y": 1020,
+        "wires": [
+            [
+                "3e7d628d0a25f367"
+            ]
+        ]
+    },
+    {
+        "id": "3e7d628d0a25f367",
+        "type": "join",
+        "z": "0c41db66bbe6a99a",
+        "name": "",
+        "mode": "custom",
+        "build": "object",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": true,
+        "timeout": "",
+        "count": "2",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "",
+        "reduceFixup": "",
+        "x": 4930,
+        "y": 1020,
+        "wires": [
+            [
+                "15fb213facdd4210"
+            ]
+        ]
+    },
+    {
+        "id": "dc9559c973f7a25f",
+        "type": "change",
+        "z": "0c41db66bbe6a99a",
+        "name": "Power Generation",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "power_generation",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 4770,
+        "y": 1080,
+        "wires": [
+            [
+                "8d70c8cc1088fb39"
+            ]
+        ]
+    },
+    {
+        "id": "39b625c4d1ff1719",
+        "type": "change",
+        "z": "0c41db66bbe6a99a",
+        "name": "Charger ID",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "charger_id",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "ABC1DE2",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 4750,
+        "y": 1120,
+        "wires": [
+            [
+                "8d70c8cc1088fb39"
+            ]
+        ]
+    },
+    {
+        "id": "8d70c8cc1088fb39",
+        "type": "join",
+        "z": "0c41db66bbe6a99a",
+        "name": "",
+        "mode": "custom",
+        "build": "object",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": true,
+        "timeout": "",
+        "count": "2",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "",
+        "reduceFixup": "",
+        "x": 4930,
+        "y": 1120,
+        "wires": [
+            [
+                "7e4f4d5e6558c44b"
+            ]
+        ]
+    },
+    {
+        "id": "9a8e24fa06e068f7",
+        "type": "change",
+        "z": "0c41db66bbe6a99a",
+        "name": "Power Generation",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "power_generation",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 4770,
+        "y": 1180,
+        "wires": [
+            [
+                "64fe97e13e958c33"
+            ]
+        ]
+    },
+    {
+        "id": "eb1d76991907109f",
+        "type": "change",
+        "z": "0c41db66bbe6a99a",
+        "name": "Charger ID",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "charger_id",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "ABC1DE2",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 4750,
+        "y": 1220,
+        "wires": [
+            [
+                "64fe97e13e958c33"
+            ]
+        ]
+    },
+    {
+        "id": "64fe97e13e958c33",
+        "type": "join",
+        "z": "0c41db66bbe6a99a",
+        "name": "",
+        "mode": "custom",
+        "build": "object",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": true,
+        "timeout": "",
+        "count": "2",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "",
+        "reduceFixup": "",
+        "x": 4930,
+        "y": 1220,
+        "wires": [
+            [
+                "5e5edee1bec776ad"
+            ]
+        ]
+    },
+    {
+        "id": "9e0eaab5449cec41",
+        "type": "change",
+        "z": "0c41db66bbe6a99a",
+        "name": "Power Generation",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "power_generation",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 4770,
+        "y": 1280,
+        "wires": [
+            [
+                "fe0c023bb499e3da"
+            ]
+        ]
+    },
+    {
+        "id": "08bc4a3d78d1cad0",
+        "type": "change",
+        "z": "0c41db66bbe6a99a",
+        "name": "Charger ID",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "charger_id",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "ABC1DE2",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 4750,
+        "y": 1320,
+        "wires": [
+            [
+                "fe0c023bb499e3da"
+            ]
+        ]
+    },
+    {
+        "id": "fe0c023bb499e3da",
+        "type": "join",
+        "z": "0c41db66bbe6a99a",
+        "name": "",
+        "mode": "custom",
+        "build": "object",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": true,
+        "timeout": "",
+        "count": "2",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "",
+        "reduceFixup": "",
+        "x": 4930,
+        "y": 1320,
+        "wires": [
+            [
+                "95fce12e4071364c"
+            ]
+        ]
+    },
+    {
+        "id": "7cc1246186ba33c4",
+        "type": "change",
+        "z": "0c41db66bbe6a99a",
+        "name": "Power Generation",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "power_generation",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 4770,
+        "y": 1380,
+        "wires": [
+            [
+                "104e1fce4fdbb860"
+            ]
+        ]
+    },
+    {
+        "id": "225ce22c199951c6",
+        "type": "change",
+        "z": "0c41db66bbe6a99a",
+        "name": "Charger ID",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "charger_id",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "ABC1DE2",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 4750,
+        "y": 1420,
+        "wires": [
+            [
+                "104e1fce4fdbb860"
+            ]
+        ]
+    },
+    {
+        "id": "104e1fce4fdbb860",
+        "type": "join",
+        "z": "0c41db66bbe6a99a",
+        "name": "",
+        "mode": "custom",
+        "build": "object",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": true,
+        "timeout": "",
+        "count": "2",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "",
+        "reduceFixup": "",
+        "x": 4930,
+        "y": 1420,
+        "wires": [
+            [
+                "6497a3aa4aa9cffb"
+            ]
+        ]
+    },
+    {
+        "id": "bd3f15af68b0348d",
+        "type": "change",
+        "z": "0c41db66bbe6a99a",
+        "name": "Power Generation",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "power_generation",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 4770,
+        "y": 1480,
+        "wires": [
+            [
+                "829dce145886c081"
+            ]
+        ]
+    },
+    {
+        "id": "473893c98a21d57b",
+        "type": "change",
+        "z": "0c41db66bbe6a99a",
+        "name": "Charger ID",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "charger_id",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "ABC1DE2",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 4750,
+        "y": 1520,
+        "wires": [
+            [
+                "829dce145886c081"
+            ]
+        ]
+    },
+    {
+        "id": "829dce145886c081",
+        "type": "join",
+        "z": "0c41db66bbe6a99a",
+        "name": "",
+        "mode": "custom",
+        "build": "object",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": true,
+        "timeout": "",
+        "count": "2",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "",
+        "reduceFixup": "",
+        "x": 4930,
+        "y": 1520,
+        "wires": [
+            [
+                "5357efb09c724825"
+            ]
+        ]
+    },
+    {
+        "id": "184038eb018782a0",
+        "type": "change",
+        "z": "0c41db66bbe6a99a",
+        "name": "Power Generation",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "power_generation",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 4770,
+        "y": 1580,
+        "wires": [
+            [
+                "75718d8d86f9425b"
+            ]
+        ]
+    },
+    {
+        "id": "dc4f30c4bf394e7e",
+        "type": "change",
+        "z": "0c41db66bbe6a99a",
+        "name": "Charger ID",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "charger_id",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "ABC1DE2",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 4750,
+        "y": 1620,
+        "wires": [
+            [
+                "75718d8d86f9425b"
+            ]
+        ]
+    },
+    {
+        "id": "75718d8d86f9425b",
+        "type": "join",
+        "z": "0c41db66bbe6a99a",
+        "name": "",
+        "mode": "custom",
+        "build": "object",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": true,
+        "timeout": "",
+        "count": "2",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "",
+        "reduceFixup": "",
+        "x": 4930,
+        "y": 1620,
+        "wires": [
+            [
+                "677da9b606b932d8"
+            ]
+        ]
+    },
+    {
+        "id": "f6b3d12744ce21fa",
+        "type": "change",
+        "z": "0c41db66bbe6a99a",
+        "name": "Power Generation",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "power_generation",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 4770,
+        "y": 1680,
+        "wires": [
+            [
+                "548cb4d3b0e69d9b"
+            ]
+        ]
+    },
+    {
+        "id": "53988fbe116578de",
+        "type": "change",
+        "z": "0c41db66bbe6a99a",
+        "name": "Charger ID",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "charger_id",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "ABC1DE2",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 4750,
+        "y": 1720,
+        "wires": [
+            [
+                "548cb4d3b0e69d9b"
+            ]
+        ]
+    },
+    {
+        "id": "548cb4d3b0e69d9b",
+        "type": "join",
+        "z": "0c41db66bbe6a99a",
+        "name": "",
+        "mode": "custom",
+        "build": "object",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": true,
+        "timeout": "",
+        "count": "2",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "",
+        "reduceFixup": "",
+        "x": 4930,
+        "y": 1720,
+        "wires": [
+            [
+                "0ac4d666922161cd"
+            ]
+        ]
+    },
+    {
+        "id": "bb90a294896575c3",
+        "type": "change",
+        "z": "0c41db66bbe6a99a",
+        "name": "get_ExcessSolar",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "ExcessSolar",
+                "tot": "global"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 3310,
+        "y": 1140,
+        "wires": [
+            [
+                "fd893483b3579977"
+            ]
+        ]
+    },
+    {
+        "id": "fb4cb9a030c39df4",
+        "type": "api-current-state",
+        "z": "0c41db66bbe6a99a",
+        "name": "ev_charging_on/off",
+        "server": "f3c6dfc0.bd122",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "input_boolean.opladning_afbrudt",
+        "state_type": "str",
+        "blockInputOverrides": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "x": 790,
+        "y": 220,
+        "wires": [
+            [
+                "a82275825dfb8644"
+            ]
+        ]
+    },
+    {
+        "id": "a82275825dfb8644",
+        "type": "change",
+        "z": "0c41db66bbe6a99a",
+        "name": "Saved_ChargeStatus",
+        "rules": [
+            {
+                "t": "set",
+                "p": "ChargeStatus",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1060,
+        "y": 220,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "214e9c4e15bd15f2",
+        "type": "change",
+        "z": "0c41db66bbe6a99a",
+        "name": "get_ChargeStatus",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "ChargeStatus",
+                "tot": "global"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 690,
+        "y": 1340,
+        "wires": [
+            [
+                "db7dec1addec799d"
+            ]
+        ]
+    },
+    {
+        "id": "db7dec1addec799d",
+        "type": "switch",
+        "z": "0c41db66bbe6a99a",
+        "name": "Chck",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "on",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "off",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 870,
+        "y": 1340,
+        "wires": [
+            [
+                "765c6bdf572053a0"
+            ],
+            [
+                "cb0166a9b5060af2"
+            ]
+        ]
+    },
+    {
+        "id": "694f223e.a8eb6c",
+        "type": "server",
+        "name": "Home Assistant",
+        "version": 5,
+        "addon": true,
+        "rejectUnauthorizedCerts": true,
+        "ha_boolean": "y|yes|true|on|home|open",
+        "connectionDelay": false,
+        "cacheJson": true,
+        "heartbeat": false,
+        "heartbeatInterval": "30",
+        "areaSelector": "friendlyName",
+        "deviceSelector": "friendlyName",
+        "entitySelector": "friendlyName",
+        "statusSeparator": "at: ",
+        "statusYear": "hidden",
+        "statusMonth": "short",
+        "statusDay": "numeric",
+        "statusHourCycle": "h23",
+        "statusTimeFormat": "h:m",
+        "enableGlobalContextStore": true
+    },
+    {
+        "id": "f3c6dfc0.bd122",
+        "type": "server",
+        "name": "Home Assistant",
+        "addon": true
+    }
+]
