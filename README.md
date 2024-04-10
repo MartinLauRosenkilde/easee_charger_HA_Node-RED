@@ -53,7 +53,7 @@ entities:
   - entity: input_datetime.opladning_slut
 title: Dynamisk opladning
 
-#Two sensors that calculate enery surplus for automatic surplus charging. One that includes the house battery and one that does not.
+#Two sensors that calculate energy surplus for automatic surplus charging. One that includes the house battery and one that does not.<br>
 #Besides that two statistics that calculates that average surplus for 30 minutes based on the above sensors, so "partly cloudy" does not interfere with automated surplus charging.
 For configuration.yaml:
 
