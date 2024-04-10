@@ -1,7 +1,7 @@
 # easee_charger_HA_Node-RED
 Contains a Node-RED flow for easee charger lite. I use not only dynamic charging, but also manual charging and timed charging through HA dashboard.
 
-<b>LOOK HERE!! --->>> <b> There's a small erro in the flow. The switch node "Priority?" has 2 rules "==on" and "!=off" which is wrong, naturally :-) It should be either "==on" and "!=on" OR "==on" and "==off"
+<b>LOOK HERE!! --->>> </b> There's a small erro in the flow. The switch node "Priority?" has 2 rules "==on" and "!=off" which is wrong, naturally :-) It should be either "==on" and "!=on" OR "==on" and "==off"
 
 -------------========== ADD THE FOLLOWING IN HA ==========-------------
 
