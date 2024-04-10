@@ -5,25 +5,25 @@ Contains a Node-RED flow for easee charger lite. I use not only dynamic charging
 
 -------------========== ADD THE FOLLOWING IN HA ==========-------------
 
-Helpers needed in HA (if you change the names, please remember to change in Node-RED also):
-input_boolean.opladning_afbrudt
-input_boolean.afbrudt_overskuds_opladning
-input_boolean.prioriter_elbil_opladning
-input_boolean.oplad_efter_solnedgang
-input_number.energi_buffer_i_watt (slider, W, max 5000, interval 100)
-input_datetime.opladning_start (time)
-input_datetime.opladning_slut (time)
-input_select.vaelg_manuel_opladestyrke:
-1400w - 1 fase
-1900w - 1 fase
-2300w - 1 fase
-3000w - 1 fase
-3700w - 1 fase
-4100w - 3 faser
-5500w - 3 faser
-6900w - 3 faser
-9000w - 3 faser
-11000w - 3 faser
+Helpers needed in HA (if you change the names, please remember to change in Node-RED also):<br>
+input_boolean.opladning_afbrudt (a button for "charging on/off")<br>
+input_boolean.afbrudt_overskuds_opladning (a button for "solar surplus on/off" aka manual charging or automatic charging)<br>
+input_boolean.prioriter_elbil_opladning (a button for prioriticing EV or house battery)<br>
+input_boolean.oplad_efter_solnedgang  (a button for "scheduled charging on/off")<br>
+input_number.energi_buffer_i_watt (slider, W, max 5000, interval 100) (a slider for "energy buffer")<br>
+input_datetime.opladning_start (time) (to enter scheduled charging starttime)<br>
+input_datetime.opladning_slut (time) (to enter scheduled charging endtime)<br>
+input_select.vaelg_manuel_opladestyrke: (to pick manual charge power)<br>
+1400w - 1 fase<br>
+1900w - 1 fase<br>
+2300w - 1 fase<br>
+3000w - 1 fase<br>
+3700w - 1 fase<br>
+4100w - 3 faser<br>
+5500w - 3 faser<br>
+6900w - 3 faser<br>
+9000w - 3 faser<br>
+11000w - 3 faser<br>
 
 
 DASHBOARD:
@@ -53,7 +53,8 @@ entities:
   - entity: input_datetime.opladning_slut
 title: Dynamisk opladning
 
-
+#Two sensors that calculate enery surplus for automatic surplus charging. One that includes the house battery and one that does not.
+#Besides that two statistics that calculates that average surplus for 30 minutes based on the above sensors, so "partly cloudy" does not interfere with automated surplus charging.
 For configuration.yaml:
 
 #Statistics
